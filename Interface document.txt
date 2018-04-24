@@ -29,3 +29,11 @@
 /api/back/class/amendClassTwo
 成功code:2071
 失败code:2072
+增加接口列表
+/api/back/add/api_add
+成功code:4001
+失败code:4002
+前台接口列表
+/api/back/add/api_q
+成功code:4011
+失败code:4012
