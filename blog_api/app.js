@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser=require("body-parser")
-
+var ueditor = require("ueditor")
 
 var app = express();
 
@@ -37,7 +37,30 @@ app.use('/api/back/user', apiBackUser);
 var apiBackClass=require("./api/back/class.js")
 app.use('/api/back/class', apiBackClass);
 
+var apiBackArticle=require("./api/back/article.js")
+app.use('/api/back/article', apiBackArticle);
 
+var apiBackApiAdd=require("./api/back/api_add.js")
+app.use('/api/back/add', apiBackApiAdd);
+
+
+app.use("/api/ue",ueditor(path.join(__dirname,'public'),function(req,res,next){
+  if(req.query.action == "uploadimage"){
+    var foo = req.ueditor;
+    var imgname = req.ueditor.filename;
+    var img_url = '/ueditor/images/';
+    res.ue_up(img_url);
+    res.setHeader('Content-Type','text/html');
+  }
+  else if(req.query.action === "listimage"){
+    var dir_url = '/ueditor/images';
+    res.ue_list(dir_url)
+  }
+  else{
+    res.setHeader('Content-Type',"application/json")
+    res.redirect("/ueditor/nodejs/config.js")
+  }
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
