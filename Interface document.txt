@@ -37,3 +37,7 @@
 /api/back/add/api_q
 成功code:4011
 失败code:4012
+添加文章接口
+/api/back/article/insert
+成功code:3011
+失败code:3012
