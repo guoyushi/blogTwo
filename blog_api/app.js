@@ -28,7 +28,7 @@ var usersRouter = require('./routes/users');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// 接口
+// 后台接口
 
 
 var apiBackUser=require("./api/back/user.js")
@@ -42,6 +42,12 @@ app.use('/api/back/article', apiBackArticle);
 
 var apiBackApiAdd=require("./api/back/api_add.js")
 app.use('/api/back/add', apiBackApiAdd);
+
+//前台接口
+var apiFrontAll = require('./api/front/article.js')
+app.use("/api/front/article",apiFrontAll);
+
+
 
 
 app.use("/api/ue",ueditor(path.join(__dirname,'public'),function(req,res,next){

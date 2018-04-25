@@ -39,24 +39,27 @@ router.get("/Class", (req, res, next) => {
   })
  //插入文章
  router.post('/insert',(req,res,next)=>{
-   var sql = `insert into ${req.body.ennmae_one}(id,oneId,twoId,article_name,editer,content,time,visitors,daodu,imgsrc,recommend,art_show) values('${Unique()}','${req.body.oneId}','${req.body.twoId}','${req.body.article_name}','${req.body.editer}','${req.body.content}','${req.body.time}',0,'${req.body.daodu}','${req.body.imgsrc}','${req.body.recommend}','${req.body.art_show}')`
-   var updataArticalNum = `updata two_class set article_num=article_num+1 where id='${req.body.twoId}'`
-   const asyncInsertArticle = async function(){
-     await sqlHandle(sql)
-     await sqlHandle(updataArticalNum)
-   }
-   asyncInsertArticle().then((data)=>{
-     res.send({
-       code:'3011',
-       msg:"插入文章成功"
-     })
-   }).catch((err)=>{
-     res.send({
-       code:'3012',
-       msg:'插入文章失败'
-     })
+  console.log(req.body.enname_one)
+ var sql = `insert into ${req.body.enname_one}(id,oneId,twoId,article_name,editer,content,time,visitors,daodu,imgsrc,recommend,art_show) values('${Unique()}','${req.body.oneId}','${req.body.twoId}','${req.body.article_name}','${req.body.editer}','${req.body.content}','${req.body.time}',0,'${req.body.daodu}','${req.body.imgsrc}','${req.body.recommend}','${req.body.art_show}')`
+ var updataArticalNum = `updata two_class set article_num=article_num+1 where id='${req.body.twoId}'`
+
+ const asyncInsertArticle = async function(){
+   await query(sql)
+   await query(updataArticalNum)
+   return
+ }
+ asyncInsertArticle().then((data)=>{
+   res.send({
+     code:'3011',
+     msg:"插入文章成功"
+   })
+ }).catch((err)=>{
+   res.send({
+     code:'3012',
+     msg:'插入文章失败'
    })
  })
+})
  //获取所有文章列表
  router.get('/getArticleList',(req,res,next)=>{
    var sqlone = `select * from one_class)`
@@ -204,8 +207,10 @@ router.get("/Class", (req, res, next) => {
         msg:"查询成功"
       })
     }).catch((err)=>{
-      code:"3052",
-      msg:"查询失败"
+      res.send({
+        code:"3052",
+        msg:"查询失败"
+      })
     })
   })
   module.exports = router
