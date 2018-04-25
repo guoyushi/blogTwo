@@ -15,6 +15,7 @@ let amend_one_class=resolve => require(['@/components/main/amend_one_class.vue']
 let api_add=resolve => require(['@/components/main/api_add.vue'], resolve)
 let api_list=resolve => require(['@/components/main/api_list.vue'], resolve)
 let api_list1=resolve => require(['@/components/main/api_list1.vue'], resolve)
+let detail_add=resolve => require(['@/components/main/detail_add.vue'], resolve)
 export default new vueRouter({
    routes:[
      {
@@ -57,6 +58,9 @@ export default new vueRouter({
         },{
           path:"api_list1",
           component:api_list1
+        },{
+          path:"detail_add",
+          component:detail_add
         }
       ]
      }

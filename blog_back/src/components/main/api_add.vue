@@ -102,6 +102,17 @@
             resetForm(formName) {
                 this.$refs[formName].resetFields();
             }
+        },
+        mounted(){
+           
+            // let cts=JSON.parse(sessionStorage.getItem('info'))
+            // console.log(cts)
+            // this.ruleForm.name=cts.cnname
+            // this.ruleForm.region=cts.work
+            // this.ruleForm.date1=cts.type_one
+            // this.ruleForm.date2=cts.type_two
+            // this.ruleForm.resource=cts.types
+            // this.ruleForm.desc=cts.info
         }
     }
 </script>
