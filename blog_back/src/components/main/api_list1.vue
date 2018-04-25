@@ -1,5 +1,5 @@
 <template>
-        <div class="api_table">
+    <div class="api_table">
         <el-table
             :data="q.slice((currentPage-1)*pageSize,currentPage*pageSize)"
             border
@@ -54,14 +54,15 @@
                 data:'',
                 q:[],
                  currentPage:1,
-                pageSize:5
+                pageSize:5,
+                id:''
             }
         },
         mounted(){
             console.log(this.$route.query)
             this.axios.get('/api/back/add/api_q').then(data=>{
                 this.data=data.data.data
-                const ts='前台接口'
+                const ts='后台接口'
                 this.data.forEach(i=>{
                     if(i.type_one==ts){
                         this.q.push(i)
@@ -69,13 +70,34 @@
                 })
             })
         },
-        methods:{
+         methods:{
             handleEdit(index,row){
                 console.log(row)
-                this.$router.push({path:'api_add'})
+                sessionStorage.setItem('info',JSON.stringify(row))
+                this.$router.push({path:'detail_add'})
             },
-            handleDelete(index,row){
-
+            handleDelete(index,row){//delList
+                this.id=row.id
+                console.log(row.id)
+                this.axios.post('/api/back/add/delList',{id:this.id}).then(data=>{
+                     switch (data.data.code) {
+                            case "6001":
+                                {
+                                this.$message({
+                                    message: "删除成功",
+                                    type: "success"
+                                });
+                                this.$router.go(0)
+                                }
+                                break;
+                            default: {
+                                this.$message({
+                                message: data.data.msg,
+                                type: "error"
+                                });
+                            }
+                        }
+                })
             },
             handleSizeChange(val) {
                 this.pageSize=val
