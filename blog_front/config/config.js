@@ -1,5 +1,4 @@
 var path = require('path')
-
 module.exports = {
   build: {
     outputRoot:path.join(__dirname,"../dist"),  //打包文件夹根目录
@@ -33,7 +32,9 @@ module.exports = {
     assetsSubDirectory: 'static', //静态文件拷贝路径，注意这里使用相对dist文件夹的目录名
     assetsPublicPath: '/',
     souceMap:"cheap-module-eval-source-map",
-    proxyTable: {},
+    proxyTable: {
+      "/api":"http://localhost:9999/",
+    },
     middleWare:function(app){
         app.get("/api",function(req,res,next){
           res.send("1234")
