@@ -1,36 +1,76 @@
 接口文档
- 一级类名的添加
-/api/back/class/insertOneClass
+ 接口说明:一级类名的添加
+url:/api/back/class/insertOneClass
+HTTP请求方式：POST
+ 参数名称         类型       参数描述
+enname_one string 一级英文类名
+cnname_one string 一级中文类名
+enname_two string 二级英文类名
+cnname_two string 二级中文类名
 成功code:2001
 失败code:2002
-二级类名的添加
-/api/back/class/insertTwoClass
+ 接口说明:二级类名的添加
+url:/api/back/class/insertTwoClass
+HTTP请求方式：POST
+ 参数名称         类型       参数描述
+   oneId         string  一级类名ID
+enname_two string 二级英文类名
+cnname_two string 二级中文类名
 成功code:2011
 失败code:2012
-获取一级分类
-/api/back/class/getOneClass
+接口说明:获取一级分类
+url:/api/back/class/getOneClass
+HTTP请求方式：GET
 成功code:2021
 失败code:2022
-获取分类列表
-/api/back/class/Class
+接口说明:获取分类列表
+url:/api/back/class/Class
+HTTP请求方式：GET
 成功code:2031
 失败code:2032
-删除一级分类
-/api/back/class/deleteClassOne
+接口说明:删除一级分类
+url:/api/back/class/deleteClassOne
+HTTP请求方式:POST
+ 参数名称  类型       参数描述
+   Id         string  一级类名ID
+enname   string 一级英文类名
 成功code:2041
 失败code:2042
-删除二级分类
-/api/back/class/deleteClassTwo
-更改一级分类
-/api/back/class/amendClassOne
+接口说明:删除二级分类
+url:/api/back/class/deleteClassTwo
+HTTP请求方式:POST
+ 参数名称        类型       参数描述
+   oneId         string  一级类名ID
+   twoId         string  二级类名ID
+enname_one   string 一级英文类名
+接口说明:更改一级分类
+url:/api/back/class/amendClassOne
+HTTP请求方式:POST
+ 参数名称    类型       参数描述
+   Id         string   一级类名ID
+cnname   string  一级中文类名
+enname   string  一级英文类名
 成功code:2061
 失败code:2062
-更改二级分类
-/api/back/class/amendClassTwo
+接口说明:更改二级分类
+url:/api/back/class/amendClassTwo
+HTTP请求方式:POST
+参数名称    类型       参数描述
+   Id         string   二级类名ID
+cnname   string  二级中文类名
+enname   string  二级英文类名
 成功code:2071
 失败code:2072
-增加接口列表
-/api/back/add/api_add
+接口说明:增加接口列表
+url:/api/back/add/api_add
+HTTP请求方式:POST
+参数名称    类型        
+cnname   string   
+works      string   
+type_one  string   
+type_two  string
+types       string
+infos        string
 成功code:4001
 失败code:4002
 前台接口列表
