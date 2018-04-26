@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var hasOwnProperty=require('has-own-property-x');  //支持hasOwnProperty
+
+
 var {
   sqlHandle,  //除查询外的其他操作
   readHandle,  //读取操作
@@ -14,10 +16,13 @@ var {
 
 router.post('/login', function(req, res, next) {
   let arg=req.body
+  console.log(arg)
   if(hasOwnProperty(arg,"username")&&hasOwnProperty(arg,"password")){
     let {username,password}=arg
     var testUser=`select * from user where name='${username}'`
+    console.log(testUser)
     readHandle(testUser).then((data)=>{
+        console.log(data)
         if(data.length>0){
           if(data[0].password==password){
                   res.send({
