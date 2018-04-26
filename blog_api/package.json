@@ -17,6 +17,7 @@
     "body-parser": "^1.18.2",
     "has-own-property-x": "^3.2.0",
     "moment": "^2.22.1",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "ueditor": "^1.2.3"
   }
 }
