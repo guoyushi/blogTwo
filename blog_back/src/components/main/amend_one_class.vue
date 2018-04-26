@@ -52,6 +52,7 @@ export default {
     if (state == "one") {
       this.state = true;
       const data=JSON.parse(sessionStorage.getItem("info"));
+      console.log(data)
       Object.entries(data).forEach(function(i){
        this.$set(this.ruleForm,i[0],i[1])
      },this)

@@ -16,6 +16,7 @@ let api_add=resolve => require(['@/components/main/api_add.vue'], resolve)
 let api_list=resolve => require(['@/components/main/api_list.vue'], resolve)
 let api_list1=resolve => require(['@/components/main/api_list1.vue'], resolve)
 let detail_add=resolve => require(['@/components/main/detail_add.vue'], resolve)
+let article_list=resolve => require(['@/components/main/article_list.vue'], resolve)
 export default new vueRouter({
    routes:[
      {
@@ -61,6 +62,9 @@ export default new vueRouter({
         },{
           path:"detail_add",
           component:detail_add
+        },{
+          path:"article_list",
+          component:article_list
         }
       ]
      }
