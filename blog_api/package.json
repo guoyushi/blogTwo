@@ -16,7 +16,7 @@
   "devDependencies": {
     "body-parser": "^1.18.2",
     "has-own-property-x": "^3.2.0",
-    "moment": "^2.22.1",
+    "moment": "^2.29.2",
     "mysql": "^2.15.0",
     "ueditor": "^1.2.3"
   }
